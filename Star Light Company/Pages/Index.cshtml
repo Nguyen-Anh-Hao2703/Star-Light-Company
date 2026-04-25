@@ -1,0 +1,33 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Star Light Company - Kiến tạo thế giới kỹ thuật số";
+}
+
+<div class="hero-section text-center py-5 mb-5 shadow-sm">
+    <div class="container py-5">
+        <h1 class="display-3 fw-bold text-dark">Star Light <span class="text-success">Company</span></h1>
+        <p class="lead fs-4 text-muted mb-4">Công ty về công nghệ giáo dục và giải pháp số sáng tạo.</p>
+        <a href="#products" class="btn btn-success btn-lg px-5 py-3 shadow-sm fw-bold">Khám phá sản phẩm</a>
+    </div>
+</div>
+<div class="container" id="products">
+    <div class="row align-items-center mb-5 g-5">
+        <div class="col-md-6">
+            <div class="p-3 bg-white shadow rounded-4 overflow-hidden border-top border-success border-5">
+                <img src="~/Logo.png" class="img-fluid mb-3" style="max-height: 80px;" />
+                <h2 class="fw-bold">Hệ thống Learning</h2>
+                <p class="text-muted">Nền tảng quản lý bài tập, thi trực tuyến và tài liệu thông minh dành cho học sinh và giáo viên hiện đại.</p>
+                <ul class="list-unstyled mb-4">
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Làm bài tập trực tuyến định dạng .qs</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Quản lý lớp học thông minh</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Thống kê điểm số tự động</li>
+                </ul>
+                <a href="https://learning-vn.onrender.com/" class="btn btn-outline-success px-4 py-2">Trải nghiệm ngay</a>
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="~/learning.png" class="img-fluid rounded-4 shadow-lg border" alt="Learning Interface" />
+        </div>
+    </div>
+</div>

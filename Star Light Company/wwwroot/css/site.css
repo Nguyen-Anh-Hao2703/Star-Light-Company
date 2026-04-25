@@ -1,0 +1,53 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Hero section với dải màu thương hiệu mượt mà */
+.hero-section {
+    background: linear-gradient(135deg, #adff2f 0%, #ffffff 100%);
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Hiệu ứng bo góc và đổ bóng mượt cho Card */
+.rounded-4 {
+    border-radius: 1.5rem !important;
+}
+
+.btn-success {
+    background-color: #92d050 !important;
+    border-color: #92d050 !important;
+    color: #1a3a00 !important;
+}
+
+    .btn-success:hover {
+        background-color: #adff2f !important;
+        transform: translateY(-2px);
+    }
