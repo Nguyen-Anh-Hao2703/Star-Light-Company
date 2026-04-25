@@ -1,30 +1,23 @@
-# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-# This stage is used when running from VS in fast mode (Default for Debug configuration)
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
-USER $APP_UID
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
-
-# This stage is used to build the service project
+# Bước 1: Build dự án
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Star Light Company/Star Light Company.csproj", "Star Light Company/"]
-RUN dotnet restore "./Star Light Company/Star Light Company.csproj"
+
+# Copy toàn bộ code vào Docker (Thay vì chỉ copy từng file lẻ dễ lỗi đường dẫn)
 COPY . .
-WORKDIR "/src/Star Light Company"
-RUN dotnet build "./Star Light Company.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-# This stage is used to publish the service project to be copied to the final stage
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Star Light Company.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+# Tìm và khôi phục các gói NuGet (Tự động quét file .csproj)
+RUN dotnet restore
 
-# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
-FROM base AS final
+# Build và Publish ra thư mục /app
+RUN dotnet publish -c Release -o /app
+
+# Bước 2: Chạy dự án
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app .
+
+# Render yêu cầu App chạy trên Port 80 hoặc theo biến môi trường PORT
+ENV ASPNETCORE_URLS=http://+:80
+EXPOSE 80
+
 ENTRYPOINT ["dotnet", "Star Light Company.dll"]
