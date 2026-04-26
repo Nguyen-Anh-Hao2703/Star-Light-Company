@@ -18,7 +18,17 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    /* Giữ nguyên ảnh và ghim ảnh đứng yên */
+    background-image: url('/Star Light Logo.png');
+    background-attachment: fixed;
+    background-position: center; /* Căn giữa ảnh nền */
+    background-repeat: no-repeat; /* Không lặp lại ảnh */
+    /* CHÌA KHÓA: Đổi cover thành contain */
+    background-size: contain;
+    /* Các thuộc tính khác giữ nguyên */
+    background-color: #f8f9fa;
+    position: relative;
+    z-index: 0;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -28,12 +38,6 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
-}
-
-/* Hero section với dải màu thương hiệu mượt mà */
-.hero-section {
-    background: linear-gradient(135deg, #adff2f 0%, #ffffff 100%);
-    border-bottom: 1px solid #e9ecef;
 }
 
 /* Hiệu ứng bo góc và đổ bóng mượt cho Card */
@@ -53,7 +57,23 @@ body {
     }
 
 header.sticky-top {
-    top: 0;
-    z-index: 1030; /* Con số "quyền lực" để luôn nổi lên trên cùng */
-    background-color: white !important; /* Đảm bảo không bị trong suốt khi cuộn */
+    z-index: 1050;
+    background-color:yellow !important;
+}
+
+/* Hiệu ứng nổi lên khi di chuột vào hình */
+.img-hover {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+    .img-hover:hover {
+        transform: translateY(-15px) scale(1.08);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+    }
+
+/* Làm nền trắng mờ cho phần Hero để dễ đọc chữ trên nền ảnh */
+.hero-section {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(5px);
 }
