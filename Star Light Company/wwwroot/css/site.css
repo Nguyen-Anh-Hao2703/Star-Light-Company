@@ -51,3 +51,9 @@ body {
         background-color: #adff2f !important;
         transform: translateY(-2px);
     }
+
+header.sticky-top {
+    top: 0;
+    z-index: 1030; /* Con số "quyền lực" để luôn nổi lên trên cùng */
+    background-color: white !important; /* Đảm bảo không bị trong suốt khi cuộn */
+}
