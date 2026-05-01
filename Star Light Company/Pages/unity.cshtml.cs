@@ -20,7 +20,7 @@ namespace Star_Light_Company.Pages
         }
         public void OnGet()
         {
-            string folderPath = Path.Combine(_env.WebRootPath, "assets");
+            string folderPath = Path.Combine(_env.WebRootPath, "Unity", "Assets");
             folder = folderPath;
 
             // 2. Kiểm tra nếu thư mục tồn tại để tránh lỗi gỡ lỗi
